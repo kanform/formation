@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: volumes
+
+---
+apiVersion : v1
+kind: PersistentVolumeClaim
+metadata:
+  name: localclaim  # Claim name which will be used by the pod
+  namespace: volumes
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi  #request size from claim to the PersistentVolume
+  storageClassName: local

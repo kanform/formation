@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pv-pod
+  namespace: volumes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pv-pod
+  template:
+    metadata:
+      labels:
+        app: pv-pod
+    spec:
+      volumes:
+      - name: vol1
+        persistentVolumeClaim:
+          claimName: localclaim
+      containers:
+      - name: pv-pod
+        image: "k8s.gcr.io/busybox"
+        args:
+          - "sleep"
+          - "10000"
+        volumeMounts:
+        - name: vol1
+          mountPath: /vols/volpv1
+
+    
