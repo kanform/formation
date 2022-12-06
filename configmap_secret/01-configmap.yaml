@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap
+  namespace: configmap-secret
+data:
+  # key/value
+  env_var: "Test de variable d'environement"
+  # avec retours à la ligne
+  conf.yaml: |
+    options:
+      variable1: Valeur1
+      variable2: Valeur2
+      variable3: Valeur3

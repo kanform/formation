@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-cm
+  namespace: configmap-secret
+  labels:
+    app: cm-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cm-demo
+  template:
+    metadata:
+      labels:
+        app: cm-demo
+    spec:
+      containers:
+        - image: busybox:1.34.1
+          name: busybox
+          args:
+          - "sleep"
+          - "100000"
+          env:
+            - name: varFromConfigMap
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: env_var
+            - name: varFromSecret
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: username
+          volumeMounts:
+            - name: config
+              mountPath: /tmp/cm
+            - name: username
+              mountPath: /tmp/secret
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: configmap
+        - name: credentials
+          secret:
+            secretName: secret
+        - name: username
+          secret:
+            secretName: secret
+            items:
+            - key: password
+              path: secret/password
