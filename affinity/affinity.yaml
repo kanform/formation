@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: affinity
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-demo
+  namespace: affinity
+  labels:
+    app: affinity-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: affinity-demo
+  template:
+    metadata:
+      labels:
+        app: affinity-demo
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.22.1
+      nodeSelector:
+        gpu: nvidia
