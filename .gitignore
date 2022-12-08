@@ -1,0 +1,7 @@
+.idea
+.DS_Store
+*.zip
+__pycache__
+.env
+correction.yaml
+usecase
