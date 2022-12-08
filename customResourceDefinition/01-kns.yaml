@@ -1,0 +1,12 @@
+apiVersion: kanform.io/v1alpha1
+kind: kanform-managed-ns
+metadata:
+  name: linuxteam-request
+  labels:
+    adgroup: linux
+spec:
+  team: linuxteam
+  quotas:
+    cpu: 500
+    memory: 512
+  expire: "31/12/2022"
