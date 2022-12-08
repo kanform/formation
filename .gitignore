@@ -1,7 +1,8 @@
 .idea
 .DS_Store
-*.zip
 __pycache__
 .env
 correction.yaml
-usecase
+usecase/*.yaml
+*.zip
+!usecase.zip
