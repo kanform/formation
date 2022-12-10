@@ -1,0 +1,11 @@
+controller:
+  name: controller
+  image:
+    registry: registry.k8s.io
+    image: ingress-nginx/controller
+    tag: "v1.5.1"
+
+    nodePorts:
+      http: 32080
+      https: 32443
+
