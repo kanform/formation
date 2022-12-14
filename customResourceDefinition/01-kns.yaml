@@ -2,6 +2,7 @@ apiVersion: kanform.io/v1alpha1
 kind: kanform-managed-ns
 metadata:
   name: linuxteam-request
+  namespace: crd
   labels:
     adgroup: linux
 spec:

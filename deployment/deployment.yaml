@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: kanform-pyproject
-        image: kanform/python-project:v1.2
+        image: kanform/python-project:v1.0
 
 ---
 apiVersion: v1
